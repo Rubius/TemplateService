@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateService", "TemplateService\TemplateService.csproj", "{075BE51E-1C43-4561-BF9F-E0D5A49F710C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBase", "ServiceBase\ServiceBase.csproj", "{BAA15C16-CEAA-4AAC-A716-6B2C80B9BB8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{075BE51E-1C43-4561-BF9F-E0D5A49F710C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{075BE51E-1C43-4561-BF9F-E0D5A49F710C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{075BE51E-1C43-4561-BF9F-E0D5A49F710C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{075BE51E-1C43-4561-BF9F-E0D5A49F710C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA15C16-CEAA-4AAC-A716-6B2C80B9BB8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA15C16-CEAA-4AAC-A716-6B2C80B9BB8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA15C16-CEAA-4AAC-A716-6B2C80B9BB8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA15C16-CEAA-4AAC-A716-6B2C80B9BB8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B648283E-1FC3-4A78-A331-373FD90A4DC4}
+	EndGlobalSection
+EndGlobal

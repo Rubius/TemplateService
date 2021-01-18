@@ -1,0 +1,29 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:latest AS build
+
+WORKDIR /src
+COPY ServiceBase/*.csproj ServiceBase/
+COPY TemplateService/*.csproj TemplateService/
+COPY TemplateService.sln .
+
+RUN dotnet restore
+
+COPY . .
+
+WORKDIR /src/TemplateService
+RUN dotnet publish -c Release -o /app
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:latest
+
+RUN apt-get update \
+    && apt-get install -y mc
+
+EXPOSE 5000
+WORKDIR /app
+COPY --from=build /app .
+
+ENV ASPNETCORE_URLS http://*:5000
+ENV CustomService_DataBaseSettings_ConnectionString "Host=host.docker.internal;Port=5432;Username=postgres;Password=123;Database=db_test;"
+ENV CustomService_RabbitMqSettings_ConnectionString "host=host.docker.internal;persistentMessages=false"
+ENV CustomService_RabbitMqSettings_HealthCheckConnectionString "amqp://guest:guest@host.docker.internal:5672"
+
+ENTRYPOINT ["dotnet", "TemplateService.dll"]

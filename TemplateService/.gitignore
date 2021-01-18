@@ -1,0 +1,8 @@
+.vs
+bin/
+obj/
+*.csproj.user
+
+appsettings.Development.json
+log.txt
+documentation.xml
