@@ -32,8 +32,8 @@ namespace ServiceBase
             {
                 Log.Information("Service started.");
 
-                var isService = !Debugger.IsAttached && args.Contains(WINDOWS_SERVICE_MODE_ARG);
-                if (isService)
+                var isWinService = !Debugger.IsAttached && args.Contains(WINDOWS_SERVICE_MODE_ARG);
+                if (isWinService)
                 {
                     var pathToExe = Process.GetCurrentProcess().MainModule.FileName;
                     var pathToContentRoot = Path.GetDirectoryName(pathToExe);
@@ -48,10 +48,10 @@ namespace ServiceBase
 
                 var host = CreateWebHostBuilder(webHostArgs).Build();
 
-                var text = isService ? "windows service" : "console application";
+                var text = isWinService ? "windows service" : "service";
                 Log.Information($"Run as {text} with args: {string.Join(' ', webHostArgs)}");
 
-                if (isService)
+                if (isWinService)
                     host.RunAsWindowsService(serviceName);
                 else
                     host.Run();

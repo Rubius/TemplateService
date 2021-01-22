@@ -27,7 +27,11 @@ namespace ServiceBase
         public BaseStartup(IConfiguration configuration, string serviceName)
         {
             _serviceName = serviceName;
-            _baseSettings = GetSettingsFromFileAndEnvironment(configuration);
+
+            _baseSettings = new BaseSettings();
+            configuration.Bind(_baseSettings);
+            FillSettingsFromEnvironment(_baseSettings);
+
             _swaggerHelper = new SwaggerHelper(serviceName);
         }
 
@@ -111,19 +115,14 @@ namespace ServiceBase
             }
         }
 
-        private BaseSettings GetSettingsFromFileAndEnvironment(IConfiguration configuration)
+        private void FillSettingsFromEnvironment(BaseSettings baseSettings)
         {
-            var baseSettings = new BaseSettings();
-            configuration.Bind(baseSettings);
-
             // Заполняем нужные секции настроек из переменных окружения
             if (baseSettings.DataBaseSettings != null)
                 EnvironmentVariableReader.SetProperies(baseSettings.DataBaseSettings, _serviceName, "DataBaseSettings");
 
             if (baseSettings.RabbitMqSettings != null)
                 EnvironmentVariableReader.SetProperies(baseSettings.RabbitMqSettings, _serviceName, "RabbitMqSettings");
-
-            return baseSettings;
         }
     }
 }

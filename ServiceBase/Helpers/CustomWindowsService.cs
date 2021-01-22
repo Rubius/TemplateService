@@ -22,15 +22,5 @@ namespace ServiceBase
         {
             ServiceName = serviceName;
         }
-
-        protected override void OnStarting(string[] args)
-        {
-            base.OnStarting(args);
-        }
-
-        protected override void OnStopping()
-        {
-            base.OnStopping();
-        }
     }
 }
